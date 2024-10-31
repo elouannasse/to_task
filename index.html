@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="addTaskForm">
+      <div class="form">
+        <div class="title">
+          <h2 class="h2-and6title">Todo Tasks</h2>
+        </div>
+        <div class="inputs">
+          <div class="name-and-eamil">
+            <label>Title</label>
+            <input id="title" type="text" placeholder="Title" />
+            <label>Description</label>
+            <input id="description" type="text" placeholder="Description" />
+          </div>
+
+          <div class="dedline">
+            <label>Enter Date</label>
+            <input id="date" type="date" />
+            <label>Enter Time</label>
+            <input id="time" type="time" />
+          </div>
+        </div>
+        <div class="btn">
+          <button id="add">Add</button>
+        </div>
+      </div>
+    </section>
+    <div class="div2">
+      <table>
+        <tr>
+          <th>title</th>
+          <th>description</th>
+          <th>dedline</th>
+          <th>type</th>
+          <th>action</th>
+        </tr>
+      </table>
+    </div>
+    <!--edit section  -->
+    <section
+      style="
+        background-color: darkgray;
+        position: absolute;
+        top: 20%;
+        right: 30%;
+        height: 350px;
+        display: none;
+      "
+      class="addTaskForm editTask"
+    >
+      <div class="form">
+        <div class="inputs">
+          <div class="name-and-eamil">
+            <label>Title</label>
+            <input
+              class="edit-title"
+              id="title"
+              type="text"
+              placeholder="Title"
+            />
+            <label>Description</label>
+            <input
+              class="edit-description"
+              id="description"
+              type="text"
+              placeholder="Description"
+            />
+          </div>
+
+          <div class="dedline">
+            <label>Enter Date</label>
+            <input class="edit-date" id="date" type="date" />
+            <label>Enter Time</label>
+            <input class="edit-time" id="time" type="time" />
+          </div>
+        </div>
+        <div class="btn">
+          <button class="edit-add" id="add">Edit</button>
+          <!-- <button onclick="" id="Cancel" type="reset">Cancel</button> -->
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
