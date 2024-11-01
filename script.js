@@ -12,6 +12,8 @@ let timeEdit = document.querySelector(".edit-time");
 let addBtnEdit = document.querySelector(".edit-add");
 
 let editTask = document.querySelector(".editTask");
+
+let eta = document.querySelector(".tst");
 // let cancelBtn = document.getElementById("cancel");
 let editTaskIndex = 0;
 let tasks = [];
@@ -48,32 +50,60 @@ function addTask() {
       objDescrption: descrption.value,
       objDate: date.value,
       objTim: time.value,
+      objEtat: 0,
     };
 
     tasks.push(objOfTasks);
   }
 }
+let choix = "";
+
+// table.addEventListener("click", (e) => {
+//   if (e.target.classList.contains("etat")) {
+//     // console.log(e.target.value);
+//     if (e.target.value == "to do") {
+//       console.log("bggg");
+//       table.className = "bggg";
+//       e.target.className = "bggg";
+//     } else if (e.target.value == "done") {
+//       table.className = "bggg2";
+//       console.log("bggg2");
+//     }
+//   }
+// });
 
 tableHeader();
-
 function addTaskToTable() {
   tableHeader();
+
   for (let i = 0; i < tasks.length; i++) {
     table.innerHTML += `
-        <tr>
+        <tr id="row${i}" class="tst ${
+      tasks[i].objEtat == 0
+        ? "bgggdefault"
+        : tasks[i].objEtat == 1
+        ? "bgggdefault"
+        : "bggg2"
+    }" >
             <td>${tasks[i].objTitle} </td>
             <td>${tasks[i].objDescrption} </td>
             <td>${tasks[i].objDate} <br>${tasks[i].objTim} </td>
-            <td><select name="" id="" style=" pdding: 8px;
-    border-radius: 20px;
-    margin-left: 40px;
-    border: none;
-    background-color: coral;
-    color: black;
-}">
-            <option value="" >doing  </option>
-           <option value="">to do</option>
-             <option value="">done</option>
+            <td><select onchange='etatmenu(${i})' class="etat" name="" id="etatmenuid${i}" style="pdding: 8px;
+                border-radius: 20px;
+                margin-left: 40px;
+                border: none;
+                background-color: coral;
+                color: black;
+            }">   
+            <option value="" ${
+              tasks[i].objEtat == 0 && "selected"
+            } >doing</option>
+           <option class="todo" value="to do" ${
+             tasks[i].objEtat == 1 && "selected"
+           }>to do</option>
+             <option value="done" ${
+               tasks[i].objEtat == 2 && "selected"
+             }>done</option>
 </select> </td>
             <td>
             <button class="btn" onclick="delet(${i})"> delet </button>
@@ -82,6 +112,24 @@ function addTaskToTable() {
            
         </tr>
     `;
+  }
+}
+function etatmenu(i) {
+  const row = document.getElementById("row" + i);
+  const menu = document.getElementById("etatmenuid" + i);
+
+  if (menu.value == "doing") {
+    tasks[i].objEtat = 0;
+    row.classList.remove("bggg2");
+    row.classList.add("bgggdefault");
+  } else if (menu.value == "to do") {
+    tasks[i].objEtat = 1;
+    row.classList.remove("bggg2");
+    row.classList.add("bgggdefault");
+  } else if (menu.value == "done") {
+    tasks[i].objEtat = 2;
+    row.classList.remove("bgggdefault");
+    row.classList.add("bggg2");
   }
 }
 

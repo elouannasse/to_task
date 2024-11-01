@@ -17,7 +17,6 @@ body {
 table {
   width: 600px;
   border-collapse: collapse;
-
   padding: 10px;
 }
 table,
@@ -120,4 +119,13 @@ button.btn {
   border: none;
   background-color: coral;
   color: black;
+}
+.bgggdefault {
+  background-color: transparent;
+}
+.bggg {
+  background-color: red;
+}
+.bggg2 {
+  background-color: green;
 }
